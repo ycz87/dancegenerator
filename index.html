@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -202,8 +203,15 @@
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0.7;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         .status {
@@ -244,17 +252,18 @@
             .control-group {
                 flex-direction: column;
             }
-            
+
             .combination-container {
                 flex-direction: column;
             }
-            
+
             .arrow {
                 transform: rotate(90deg);
             }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -272,7 +281,7 @@
                     🚀 开始组合
                 </button>
             </div>
-            
+
             <div class="xml-upload">
                 <div class="file-input-wrapper">
                     <input type="file" id="xmlFile" accept=".xml" onchange="loadXMLFile(event)">
@@ -320,11 +329,11 @@
             }
 
             const reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 try {
                     const parser = new DOMParser();
                     const xmlDoc = parser.parseFromString(e.target.result, 'text/xml');
-                    
+
                     // 检查XML解析错误
                     const parserError = xmlDoc.querySelector('parsererror');
                     if (parserError) {
@@ -333,10 +342,10 @@
 
                     // 尝试多种可能的XML结构
                     let newElements = [];
-                    
+
                     // 尝试读取不同的标签名
                     const possibleTags = ['element', 'item', 'node', 'entry', 'data'];
-                    
+
                     for (let tag of possibleTags) {
                         const tagElements = xmlDoc.getElementsByTagName(tag);
                         if (tagElements.length > 0) {
@@ -382,7 +391,7 @@
                 }
             };
 
-            reader.onerror = function() {
+            reader.onerror = function () {
                 status.innerHTML = '<div class="error">❌ 读取文件失败</div>';
             };
 
@@ -445,7 +454,7 @@
         function calculateCombinations(n, r) {
             if (r > n) return 0;
             if (r === 0 || r === n) return 1;
-            
+
             let result = 1;
             for (let i = 0; i < r; i++) {
                 result = result * (n - i) / (i + 1);
@@ -465,7 +474,7 @@
                 elementDiv.className = 'element';
                 elementDiv.textContent = element;
                 elementDiv.style.animationDelay = `${index * 0.1}s`;
-                
+
                 container.appendChild(elementDiv);
 
                 // 添加箭头（除了最后一个元素）
@@ -481,10 +490,93 @@
             result.appendChild(container);
         }
 
+        // 添加加载远程XML文件的函数
+        function loadRemoteXML() {
+            const status = document.getElementById('status');
+            status.innerHTML = '<div class="status">正在加载默认舞蹈动作数据...</div>';
+
+            fetch('https://dance.joyinai.net/freestyle5.0.xml')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    }
+                    return response.text();
+                })
+                .then(xmlText => {
+                    try {
+                        const parser = new DOMParser();
+                        const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+
+                        // 检查XML解析错误
+                        const parserError = xmlDoc.querySelector('parsererror');
+                        if (parserError) {
+                            throw new Error('XML格式错误');
+                        }
+
+                        // 尝试多种可能的XML结构
+                        let newElements = [];
+
+                        // 尝试读取不同的标签名
+                        const possibleTags = ['element', 'item', 'node', 'entry', 'data'];
+
+                        for (let tag of possibleTags) {
+                            const tagElements = xmlDoc.getElementsByTagName(tag);
+                            if (tagElements.length > 0) {
+                                for (let i = 0; i < tagElements.length; i++) {
+                                    const textContent = tagElements[i].textContent.trim();
+                                    if (textContent) {
+                                        newElements.push(textContent);
+                                    }
+                                }
+                                break;
+                            }
+                        }
+
+                        // 如果没有找到预定义标签，尝试读取所有叶子节点
+                        if (newElements.length === 0) {
+                            const allElements = xmlDoc.getElementsByTagName('*');
+                            for (let i = 0; i < allElements.length; i++) {
+                                const element = allElements[i];
+                                // 只获取叶子节点（没有子元素的节点）
+                                if (element.children.length === 0) {
+                                    const textContent = element.textContent.trim();
+                                    if (textContent && textContent.length < 50) { // 避免获取过长的文本
+                                        newElements.push(textContent);
+                                    }
+                                }
+                            }
+                        }
+
+                        if (newElements.length === 0) {
+                            throw new Error('XML文件中没有找到有效的元素数据');
+                        }
+
+                        // 去重
+                        elements = [...new Set(newElements)];
+                        usedCombinations.clear(); // 清空已使用的组合
+
+                        status.innerHTML = `<div class="success">✅ 成功从远程加载 ${elements.length} 个舞蹈动作</div>`;
+                        showElementsInfo();
+
+                    } catch (error) {
+                        status.innerHTML = `<div class="error">❌ 解析远程XML文件失败: ${error.message}<br>已使用默认数据</div>`;
+                        console.error('远程XML解析错误:', error);
+                        showElementsInfo(); // 显示默认元素
+                    }
+                })
+                .catch(error => {
+                    status.innerHTML = `<div class="error">❌ 加载远程XML文件失败: ${error.message}<br>已使用默认数据</div>`;
+                    console.error('远程XML加载错误:', error);
+                    showElementsInfo(); // 显示默认元素
+                });
+        }
+
         // 页面加载时显示默认元素信息
-        window.onload = function() {
+        window.onload = function () {
             showElementsInfo();
+            loadRemoteXML();
         };
     </script>
 </body>
+
 </html>
