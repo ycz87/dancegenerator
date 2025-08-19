@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<street_dances>
+  <dance_category>
+    <name>圆肩手交叉手</name>
+    <dances>
+      <dance>
+        <name>Kid n play</name>
+      </dance>
+      <dance>
+        <name>patty duke</name>
+      </dance>
+      <dance>
+        <name>skate</name>
+      </dance>
+      <dance>
+        <name>Mary J</name>
+      </dance>
+    </dances>
+  </dance_category>
+  <dance_category>
+    <name>摸肩摸身体手</name>
+    <dances>
+      <dance>
+        <name>run dmc</name>
+      </dance>
+      <dance>
+        <name>gucci</name>
+      </dance>
+      <dance>
+        <name>elite force</name>
+      </dance>
+      <dance>
+        <name>prep</name>
+      </dance>
+      <dance>
+        <name>LL COOLJ</name>
+      </dance>
+    </dances>
+  </dance_category>
+  <dance_category>
+    <name>抬拳抬手</name>
+    <dances>
+      <dance>
+        <name>Steve Martin</name>
+      </dance>
+      <dance>
+        <name>running man</name>
+      </dance>
+      <dance>
+        <name>bk bounce</name>
+      </dance>
+      <dance>
+        <name>happy feet</name>
+      </dance>
+      <dance>
+        <name>Reebok</name>
+      </dance>
+      <dance>
+        <name>cabbage patch</name>
+      </dance>
+      <dance>
+        <name>tlc</name>
+      </dance>
+      <dance>
+        <name>Wop</name>
+      </dance>
+      <dance>
+        <name>reject</name>
+      </dance>
+      <dance>
+        <name>jerk</name>
+      </dance>
+      <dance>
+        <name>rock off</name>
+      </dance>
+      <dance>
+        <name>shamrock</name>
+      </dance>
+      <dance>
+        <name>roger rabbit</name>
+      </dance>
+      <dance>
+        <name>monastery</name>
+      </dance>
+      <dance>
+        <name>Brooklyn</name>
+      </dance>
+      <dance>
+        <name>bedrock</name>
+      </dance>
+      <dance>
+        <name>yeek</name>
+      </dance>
+      <dance>
+        <name>stick n roll</name>
+      </dance>
+    </dances>
+  </dance_category>
+  <dance_category>
+    <name>收拳手</name>
+    <dances>
+      <dance>
+        <name>Wu tang</name>
+      </dance>
+      <dance>
+        <name>typewriter</name>
+      </dance>
+      <dance>
+        <name>diddy dance</name>
+      </dance>
+      <dance>
+        <name>ALF</name>
+      </dance>
+      <dance>
+        <name>aunt jackie</name>
+      </dance>
+    </dances>
+  </dance_category>
+  <dance_category>
+    <name>出拳</name>
+    <dances>
+      <dance>
+        <name>Smurf</name>
+      </dance>
+      <dance>
+        <name>Biz Markie</name>
+      </dance>
+      <dance>
+        <name>chicken noodle soup</name>
+      </dance>
+      <dance>
+        <name>cat daddy</name>
+      </dance>
+      <dance>
+        <name>mike Tyson</name>
+      </dance>
+      <dance>
+        <name>robocop</name>
+      </dance>
+      <dance>
+        <name>Superman</name>
+      </dance>
+      <dance>
+        <name>horse dance</name>
+      </dance>
+      <dance>
+        <name>cherry hill</name>
+      </dance>
+      <dance>
+        <name>dipin</name>
+      </dance>
+      <dance>
+        <name>diddy bop</name>
+      </dance>
+    </dances>
+  </dance_category>
+  <dance_category>
+    <name>wave手</name>
+    <dances>
+      <dance>
+        <name>fila</name>
+      </dance>
+      <dance>
+        <name>pepper seed</name>
+      </dance>
+      <dance>
+        <name>water dance</name>
+      </dance>
+      <dance>
+        <name>arm wave</name>
+      </dance>
+      <dance>
+        <name>butterfly</name>
+      </dance>
+      <dance>
+        <name>let it rain</name>
+      </dance>
+      <dance>
+        <name>funky water gate</name>
+      </dance>
+    </dances>
+  </dance_category>
+  <dance_category>
+    <name>反手</name>
+    <dances>
+      <dance>
+        <name>get lite</name>
+      </dance>
+      <dance>
+        <name>tone wop</name>
+      </dance>
+    </dances>
+  </dance_category>
+  <dance_category>
+    <name>九宫格手</name>
+    <dances>
+      <dance>
+        <name>Toyman</name>
+      </dance>
+    </dances>
+  </dance_category>
+  <dance_category>
+    <name>挥手挥拳</name>
+    <dances>
+      <dance>
+        <name>party machine</name>
+      </dance>
+      <dance>
+        <name>Janet Jackson</name>
+      </dance>
+      <dance>
+        <name>up stairs</name>
+      </dance>
+      <dance>
+        <name>toss it up</name>
+      </dance>
+      <dance>
+        <name>Gucci</name>
+      </dance>
+      <dance>
+        <name>the Humpty dance</name>
+      </dance>
+      <dance>
+        <name>baseball</name>
+      </dance>
+      <dance>
+        <name>bart Simpson</name>
+      </dance>
+      <dance>
+        <name>dougie</name>
+      </dance>
+      <dance>
+        <name>roller skate</name>
+      </dance>
+    </dances>
+  </dance_category>
+  <dance_category>
+    <name>摇手转手</name>
+    <dances>
+      <dance>
+        <name>bad man</name>
+      </dance>
+      <dance>
+        <name>Harlem shake</name>
+      </dance>
+      <dance>
+        <name>Bankhead bounce</name>
+      </dance>
+    </dances>
+  </dance_category>
+</street_dances>
