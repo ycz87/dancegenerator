@@ -137,8 +137,8 @@ function getStrategyName(strategy) {
     const strategyNames = {
         'unique': '分类可重复，舞蹈不重复',
         'repeatable': '分类可重复，舞蹈可重复',
-        'category_repeatable': '分类不重复，舞蹈可重复',
-        'category_unique': '分类不重复，舞蹈不重复'
+        'category_repeatable': '每个分类至少1个，舞蹈可重复',
+        'category_unique': '每个分类至少1个，舞蹈不重复'
     };
     return strategyNames[strategy] || '未知策略';
 }
@@ -161,77 +161,79 @@ function generateRepeatableElements(count) {
     return combination;
 }
 
-// 策略c: 分类不重复，舞蹈可重复
+// 策略c: 每个分类至少1个，舞蹈可重复
 function generateCategoryRepeatable(count) {
-    if (count > danceCategories.length) {
-        throw new Error(`最多只能生成 ${danceCategories.length} 个不同分类的舞蹈动作`);
+    if (count < danceCategories.length) {
+        throw new Error(`至少需要 ${danceCategories.length} 个动作才能保证每个分类至少1个`);
     }
     
     const combination = [];
-    const usedCategories = new Set();
     
-    // 随机选择N个不同分类，每个分类选择一个舞蹈
-    while (combination.length < count) {
-        // 随机选择一个分类
-        const availableCategories = danceCategories.filter(cat => !usedCategories.has(cat.name));
-        if (availableCategories.length === 0) break;
-        
-        const randomCategoryIndex = Math.floor(Math.random() * availableCategories.length);
-        const selectedCategory = availableCategories[randomCategoryIndex];
-        
-        // 从该分类中随机选择一个舞蹈
-        const randomDanceIndex = Math.floor(Math.random() * selectedCategory.dances.length);
-        const selectedDance = selectedCategory.dances[randomDanceIndex];
-        
+    // 第一步：每个分类选择一个舞蹈
+    danceCategories.forEach(category => {
+        const randomDanceIndex = Math.floor(Math.random() * category.dances.length);
+        const selectedDance = category.dances[randomDanceIndex];
         combination.push(selectedDance);
-        usedCategories.add(selectedCategory.name);
+    });
+    
+    // 第二步：剩余的位置从所有舞蹈中随机选择（可重复）
+    const remainingCount = count - danceCategories.length;
+    for (let i = 0; i < remainingCount; i++) {
+        const randomIndex = Math.floor(Math.random() * allDances.length);
+        combination.push(allDances[randomIndex]);
     }
     
     // 打乱顺序
     return shuffleArray(combination);
 }
 
-// 策略d: 分类不重复，舞蹈不重复
+// 策略d: 每个分类至少1个，舞蹈不重复
 function generateCategoryUnique(count) {
-    if (count > danceCategories.length) {
-        throw new Error(`最多只能生成 ${danceCategories.length} 个不同分类的舞蹈动作`);
+    if (count < danceCategories.length) {
+        throw new Error(`至少需要 ${danceCategories.length} 个动作才能保证每个分类至少1个`);
+    }
+    
+    if (count > allDances.length) {
+        throw new Error(`最多只能生成 ${allDances.length} 个不重复的舞蹈动作`);
     }
     
     const combination = [];
-    const usedCategories = new Set();
     const usedDances = new Set();
     
-    // 随机选择N个不同分类，确保舞蹈也不重复
-    let attempts = 0;
-    const maxAttempts = 1000;
-    
-    while (combination.length < count && attempts < maxAttempts) {
-        attempts++;
+    // 第一步：每个分类选择一个舞蹈
+    danceCategories.forEach(category => {
+        let selectedDance;
+        let attempts = 0;
+        const maxAttempts = 100;
         
-        // 随机选择一个未使用的分类
-        const availableCategories = danceCategories.filter(cat => !usedCategories.has(cat.name));
-        if (availableCategories.length === 0) break;
+        // 尝试从该分类中选择一个未使用的舞蹈
+        do {
+            const randomDanceIndex = Math.floor(Math.random() * category.dances.length);
+            selectedDance = category.dances[randomDanceIndex];
+            attempts++;
+        } while (usedDances.has(selectedDance) && attempts < maxAttempts);
         
-        const randomCategoryIndex = Math.floor(Math.random() * availableCategories.length);
-        const selectedCategory = availableCategories[randomCategoryIndex];
-        
-        // 从该分类中选择一个未使用的舞蹈
-        const availableDances = selectedCategory.dances.filter(dance => !usedDances.has(dance));
-        if (availableDances.length === 0) {
-            // 如果该分类所有舞蹈都已使用，跳过此分类
-            continue;
+        if (attempts >= maxAttempts) {
+            // 如果所有舞蹈都被使用，选择该分类的第一个可用舞蹈
+            selectedDance = category.dances.find(dance => !usedDances.has(dance)) || category.dances[0];
         }
         
-        const randomDanceIndex = Math.floor(Math.random() * availableDances.length);
-        const selectedDance = availableDances[randomDanceIndex];
-        
         combination.push(selectedDance);
-        usedCategories.add(selectedCategory.name);
         usedDances.add(selectedDance);
+    });
+    
+    // 第二步：剩余的位置从未使用的舞蹈中随机选择
+    const remainingCount = count - danceCategories.length;
+    const availableDances = allDances.filter(dance => !usedDances.has(dance));
+    
+    if (availableDances.length < remainingCount) {
+        throw new Error('无法生成足够的不重复舞蹈动作（每个分类至少1个且舞蹈不重复）');
     }
     
-    if (combination.length < count) {
-        throw new Error('无法生成足够的不重复舞蹈动作（分类和舞蹈都不重复）');
+    // 随机选择剩余的舞蹈
+    const shuffledAvailable = shuffleArray(availableDances);
+    for (let i = 0; i < remainingCount; i++) {
+        combination.push(shuffledAvailable[i]);
     }
     
     // 打乱顺序
