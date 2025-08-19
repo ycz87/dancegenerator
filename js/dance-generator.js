@@ -3,6 +3,52 @@ let danceCategories = [];
 let allDances = [];
 let usedCombinations = new Set();
 
+// 策略说明数据
+const strategyDescriptions = {
+    'unique': {
+        title: '分类可重复，舞蹈不重复',
+        icon: '🎯',
+        description: '可以从任意分类中选择舞蹈元素，但每个舞蹈动作只能出现一次，确保组合的多样性。'
+    },
+    'repeatable': {
+        title: '分类可重复，舞蹈可重复',
+        icon: '🔄',
+        description: '可以从任意分类中选择舞蹈元素，同一个舞蹈动作也可以重复出现，适合练习特定动作。'
+    },
+    'category_repeatable': {
+        title: '每个分类至少1个，舞蹈可重复',
+        icon: '⚖️',
+        description: '确保每个舞蹈分类都有至少一个动作被选中，同一个舞蹈动作可以重复，保证组合的均衡性。'
+    },
+    'category_unique': {
+        title: '每个分类至少1个，舞蹈不重复',
+        icon: '✨',
+        description: '确保每个舞蹈分类都有至少一个动作被选中，且每个舞蹈动作只能出现一次，实现最佳的多样性和均衡性。'
+    }
+};
+
+// 更新策略说明
+function updateStrategyDescription() {
+    const strategy = document.getElementById('strategy').value;
+    const description = strategyDescriptions[strategy];
+    const descriptionElement = document.getElementById('strategyDescription');
+    
+    if (description && descriptionElement) {
+        descriptionElement.innerHTML = `
+            <div class="strategy-icon">${description.icon}</div>
+            <div class="strategy-text">
+                <strong>${description.title}</strong><br>
+                ${description.description}
+            </div>
+        `;
+    }
+}
+
+// 页面加载完成后初始化策略说明
+document.addEventListener('DOMContentLoaded', function() {
+    updateStrategyDescription();
+});
+
 // 显示元素信息
 function showElementsInfo() {
     const elementsInfo = document.getElementById('elementsInfo');

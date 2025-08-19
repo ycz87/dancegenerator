@@ -29,12 +29,22 @@
             <div class="strategy-group">
                 <div class="input-group">
                     <label for="strategy">生成策略:</label>
-                    <select id="strategy">
+                    <select id="strategy" onchange="updateStrategyDescription()">
                         <option value="unique">分类可重复，舞蹈不重复</option>
                         <option value="repeatable">分类可重复，舞蹈可重复</option>
                         <option value="category_repeatable">每个分类至少1个，舞蹈可重复</option>
                         <option value="category_unique">每个分类至少1个，舞蹈不重复</option>
                     </select>
+                </div>
+                
+                <div class="strategy-explanation">
+                    <div class="strategy-description" id="strategyDescription">
+                        <div class="strategy-icon">💡</div>
+                        <div class="strategy-text">
+                            <strong>默认策略</strong><br>
+                            可以从任意分类中选择舞蹈元素，但每个舞蹈动作只能出现一次，确保组合的多样性。
+                        </div>
+                    </div>
                 </div>
             </div>
 
