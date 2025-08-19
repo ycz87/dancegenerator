@@ -36,24 +36,32 @@ function loadXMLFile(event) {
                 throw new Error('XML格式错误');
             }
 
-            // 解析XML结构 - 支持简单的element格式
+            // 解析XML结构 - 支持复杂的dance_category格式
             const newCategories = [];
             const newAllDances = [];
             
-            const elementNodes = xmlDoc.getElementsByTagName('element');
-            for (let i = 0; i < elementNodes.length; i++) {
-                const elementName = elementNodes[i].textContent.trim();
-                if (elementName) {
-                    newAllDances.push(elementName);
-                }
-            }
+            const categoryElements = xmlDoc.getElementsByTagName('dance_category');
             
-            // 为简单结构创建一个默认分类
-            if (newAllDances.length > 0) {
-                newCategories.push({
-                    name: '舞蹈动作',
-                    dances: newAllDances
-                });
+            for (let i = 0; i < categoryElements.length; i++) {
+                const categoryElement = categoryElements[i];
+                const categoryName = categoryElement.getElementsByTagName('name')[0].textContent.trim();
+                const dances = [];
+                
+                const danceElements = categoryElement.getElementsByTagName('dance');
+                for (let j = 0; j < danceElements.length; j++) {
+                    const danceName = danceElements[j].getElementsByTagName('name')[0].textContent.trim();
+                    if (danceName) {
+                        dances.push(danceName);
+                        newAllDances.push(danceName);
+                    }
+                }
+                
+                if (dances.length > 0) {
+                    newCategories.push({
+                        name: categoryName,
+                        dances: dances
+                    });
+                }
             }
 
             if (newCategories.length === 0) {
@@ -317,7 +325,7 @@ function loadRemoteXML() {
     const status = document.getElementById('status');
     status.innerHTML = '<div class="status">正在加载舞蹈动作数据...</div>';
 
-    fetch('xml/freestyle5.0.xml')
+    fetch('xml/dance250819.xml')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -335,24 +343,32 @@ function loadRemoteXML() {
                     throw new Error('XML格式错误');
                 }
 
-                // 解析XML结构 - 支持简单的element格式
+                // 解析XML结构 - 支持复杂的dance_category格式
                 const newCategories = [];
                 const newAllDances = [];
                 
-                const elementNodes = xmlDoc.getElementsByTagName('element');
-                for (let i = 0; i < elementNodes.length; i++) {
-                    const elementName = elementNodes[i].textContent.trim();
-                    if (elementName) {
-                        newAllDances.push(elementName);
-                    }
-                }
+                const categoryElements = xmlDoc.getElementsByTagName('dance_category');
                 
-                // 为简单结构创建一个默认分类
-                if (newAllDances.length > 0) {
-                    newCategories.push({
-                        name: '舞蹈动作',
-                        dances: newAllDances
-                    });
+                for (let i = 0; i < categoryElements.length; i++) {
+                    const categoryElement = categoryElements[i];
+                    const categoryName = categoryElement.getElementsByTagName('name')[0].textContent.trim();
+                    const dances = [];
+                    
+                    const danceElements = categoryElement.getElementsByTagName('dance');
+                    for (let j = 0; j < danceElements.length; j++) {
+                        const danceName = danceElements[j].getElementsByTagName('name')[0].textContent.trim();
+                        if (danceName) {
+                            dances.push(danceName);
+                            newAllDances.push(danceName);
+                        }
+                    }
+                    
+                    if (dances.length > 0) {
+                        newCategories.push({
+                            name: categoryName,
+                            dances: dances
+                        });
+                    }
                 }
 
                 if (newCategories.length === 0) {
