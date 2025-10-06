@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<street_dances>
+  <dance_category>
+    <name>old school元素11个</name>
+    <dances>
+      <dance>
+        <name>jerk</name>
+      </dance>
+      <dance>
+        <name>shamrock</name>
+      </dance>
+      <dance>
+        <name>the fila</name>
+      </dance>
+      <dance>
+        <name>pepper seed</name>
+      </dance>
+      <dance>
+        <name>heel toe</name>
+      </dance>
+      <dance>
+        <name>james brown</name>
+      </dance>
+      <dance>
+        <name>charleston</name>
+      </dance>
+      <dance>
+        <name>bernie</name>
+      </dance>
+      <dance>
+        <name>mc hammer</name>
+      </dance>
+      <dance>
+        <name>go away/janet jackson</name>
+      </dance>
+      <dance>
+        <name>marry j</name>
+      </dance>
+    </dances>
+  </dance_category>
+  <dance_category>
+    <name>跳跃类12个</name>
+    <dances>
+      <dance>
+        <name>happy feet</name>
+      </dance>
+      <dance>
+        <name>party machine</name>
+      </dance>
+      <dance>
+        <name>sponge bob</name>
+      </dance>
+      <dance>
+        <name>roger rabbit</name>
+      </dance>
+      <dance>
+        <name>high stepping</name>
+      </dance>
+      <dance>
+        <name>c-walk</name>
+      </dance>
+      <dance>
+        <name>ATL stomp</name>
+      </dance>
+      <dance>
+        <name>ALB</name>
+      </dance>
+      <dance>
+        <name>kick ball change</name>
+      </dance>
+      <dance>
+        <name>guess</name>
+      </dance>
+      <dance>
+        <name>toss it up</name>
+      </dance>
+      <dance>
+        <name>indian step</name>
+      </dance>
+    </dances>
+  </dance_category>
+  <dance_category>
+    <name>lite feet10个</name>
+    <dances>
+      <dance>
+        <name>bad one</name>
+      </dance>
+      <dance>
+        <name>rev up</name>
+      </dance>
+      <dance>
+        <name>tone whop</name>
+      </dance>
+      <dance>
+        <name>tic tac toe</name>
+      </dance>
+      <dance>
+        <name>chicken noodle soup</name>
+      </dance>
+      <dance>
+        <name>aunt jackie</name>
+      </dance>
+      <dance>
+        <name>lock in</name>
+      </dance>
+      <dance>
+        <name>john o clap</name>
+      </dance>
+      <dance>
+        <name>all in</name>
+      </dance>
+      <dance>
+        <name>harlem shake</name>
+      </dance>
+    </dances>
+  </dance_category>
+  <dance_category>
+    <name>摇摆8个</name>
+    <dances>
+      <dance>
+        <name>swing</name>
+      </dance>
+      <dance>
+        <name>the wop</name>
+      </dance>
+      <dance>
+        <name>rubber band</name>
+      </dance>
+      <dance>
+        <name>freaky deaky</name>
+      </dance>
+      <dance>
+        <name>mike tyson</name>
+      </dance>
+      <dance>
+        <name>up&amp;down stairs</name>
+      </dance>
+      <dance>
+        <name>baseball</name>
+      </dance>
+    </dances>
+  </dance_category>
+  <dance_category>
+    <name>连接元素13个</name>
+    <dances>
+      <dance>
+        <name>up&amp;down</name>
+      </dance>
+      <dance>
+        <name>robocop</name>
+      </dance>
+      <dance>
+        <name>skate roll</name>
+      </dance>
+      <dance>
+        <name>JB slide</name>
+      </dance>
+      <dance>
+        <name>james brown</name>
+      </dance>
+      <dance>
+        <name>Steve martin</name>
+      </dance>
+      <dance>
+        <name>mike tyson</name>
+      </dance>
+      <dance>
+        <name>patty duke</name>
+      </dance>
+    </dances>
+  </dance_category>
+  <dance_category>
+    <name>滑步skate6个</name>
+    <dances>
+      <dance>
+        <name>skate</name>
+      </dance>
+      <dance>
+        <name>roof top</name>
+      </dance>
+      <dance>
+        <name>forcing</name>
+      </dance>
+      <dance>
+        <name>running man</name>
+      </dance>
+      <dance>
+        <name>bart simpson</name>
+      </dance>
+      <dance>
+        <name>slide</name>
+      </dance>
+    </dances>
+  </dance_category>
+  <dance_category>
+    <name>bounce11个</name>
+    <dances>
+      <dance>
+        <name>patty duke</name>
+      </dance>
+      <dance>
+        <name>brooklyn</name>
+      </dance>
+      <dance>
+        <name>box step</name>
+      </dance>
+      <dance>
+        <name>yeek</name>
+      </dance>
+      <dance>
+        <name>walk out</name>
+      </dance>
+      <dance>
+        <name>Steve martin</name>
+      </dance>
+      <dance>
+        <name>smurf</name>
+      </dance>
+      <dance>
+        <name>bk bounce</name>
+      </dance>
+      <dance>
+        <name>crab（the v）</name>
+      </dance>
+      <dance>
+        <name>charleston</name>
+      </dance>
+      <dance>
+        <name>dipin</name>
+      </dance>
+    </dances>
+  </dance_category>
+  <dance_category>
+    <name>rock10个</name>
+    <dances>
+      <dance>
+        <name>wu-tang</name>
+      </dance>
+      <dance>
+        <name>mike tyson</name>
+      </dance>
+      <dance>
+        <name>ALF</name>
+      </dance>
+      <dance>
+        <name>gucci</name>
+      </dance>
+      <dance>
+        <name>Bobby brown</name>
+      </dance>
+      <dance>
+        <name>roof top</name>
+      </dance>
+      <dance>
+        <name>prep</name>
+      </dance>
+      <dance>
+        <name>get light</name>
+      </dance>
+      <dance>
+        <name>marge light</name>
+      </dance>
+      <dance>
+        <name>hummpty dance</name>
+      </dance>
+    </dances>
+  </dance_category>
+</street_dances>
