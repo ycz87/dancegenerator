@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<street_dances>
+  <dance_category>
+    <name>locking</name>
+    <dances>
+      <dance>
+        <name>point</name>
+      </dance>
+      <dance>
+        <name>wave</name>
+      </dance>
+      <dance>
+        <name>wrist roll</name>
+      </dance>
+      <dance>
+        <name>scoob doo</name>
+      </dance>
+      <dance>
+        <name>up lock</name>
+      </dance>
+      <dance>
+        <name>stop n go</name>
+      </dance>
+    </dances>
+  </dance_category>
+  <dance_category>
+    <name>Hiphop</name>
+    <dances>
+      <dance>
+        <name>wutang</name>
+      </dance>
+      <dance>
+        <name>partymachine</name>
+      </dance>
+      <dance>
+        <name>kick ball change</name>
+      </dance>
+      <dance>
+        <name>high stepping</name>
+      </dance>
+      <dance>
+        <name>go away</name>
+      </dance>
+      <dance>
+        <name>reebok</name>
+      </dance>
+    </dances>
+  </dance_category>
+  <dance_category>
+    <name>house</name>
+    <dances>
+      <dance>
+        <name>3steps</name>
+      </dance>
+      <dance>
+        <name>salsa step</name>
+      </dance>
+      <dance>
+        <name>side hop</name>
+      </dance>
+      <dance>
+        <name>side swing</name>
+      </dance>
+      <dance>
+        <name>tic tac toe</name>
+      </dance>
+      <dance>
+        <name>twist</name>
+      </dance>
+    </dances>
+  </dance_category>
+  <dance_category>
+    <name>soul</name>
+    <dances>
+      <dance>
+        <name>four corner</name>
+      </dance>
+      <dance>
+        <name>break down</name>
+      </dance>
+      <dance>
+        <name>old man</name>
+      </dance>
+      <dance>
+        <name>tilt</name>
+      </dance>
+      <dance>
+        <name>LA.stomp</name>
+      </dance>
+      <dance>
+        <name>popcorn</name>
+      </dance>
+    </dances>
+  </dance_category>
+</street_dances>
