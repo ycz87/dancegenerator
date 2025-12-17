@@ -373,7 +373,7 @@ function loadRemoteXML() {
     const status = document.getElementById('status');
     status.innerHTML = '<div class="status">正在加载舞蹈动作数据...</div>';
 
-    fetch('xml/dance251006.xml')
+    fetch('xml/dance_olny24_251217.xml')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}: ${response.statusText}`);
